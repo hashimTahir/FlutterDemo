@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021/  1/ 14.  Created by Hashim Tahir
+ */
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,11 +24,7 @@ class HomeStatelessWidget extends StatelessWidget {
         centerTitle: true,
       ),
       /*To nest widgets use child property*/
-      body: Center(
-        child:Image(
-          image: NetworkImage('https://cdn.pixabay.com/photo/2020/10/22/20/08/great-spotted-woodpecker-5677069_1280.jpg'),
-        ),
-      ),
+      body: Center(child: Image.asset('assets/test_image2.webp')),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Text("Sup"),

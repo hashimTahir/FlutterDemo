@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021/  1/ 14.  Created by Hashim Tahir
+ */
+
 // This is a basic Flutter integration test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2021/  1/ 14.  Created by Hashim Tahir
+ */
+
 include ':app'
 
 def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
