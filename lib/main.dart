@@ -24,7 +24,12 @@ class HomeStatelessWidget extends StatelessWidget {
         centerTitle: true,
       ),
       /*To nest widgets use child property*/
-      body: Center(child: Image.asset('assets/test_image2.webp')),
+      body: Center(
+          child: Icon(
+        Icons.airport_shuttle,
+        color: Colors.lightBlue,
+        size: 50.0,
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Text("Sup"),
