@@ -25,10 +25,13 @@ class HomeStatelessWidget extends StatelessWidget {
       ),
       /*To nest widgets use child property*/
       body: Center(
-          child: Icon(
-        Icons.airport_shuttle,
-        color: Colors.lightBlue,
-        size: 50.0,
+          child: RaisedButton.icon(
+        onPressed: () {
+          print("Click Executed");
+        },
+        icon: Icon(Icons.mail),
+        label: Text("Yo!"),
+        color: Colors.amber[600],
       )),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
