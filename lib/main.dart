@@ -24,15 +24,16 @@ class HomeStatelessWidget extends StatelessWidget {
         centerTitle: true,
       ),
       /*To nest widgets use child property*/
-      body: Center(
-          child: RaisedButton.icon(
-        onPressed: () {
-          print("Click Executed");
-        },
-        icon: Icon(Icons.mail),
-        label: Text("Yo!"),
-        color: Colors.amber[600],
-      )),
+      body: Container(
+        color: Colors.grey[400],
+        /*Edge insets used for padding and margins inside containers.*/
+        /*Padding widget can be used for the internal childs. but
+        * it cant have margin.
+        * for margins use container widget.*/
+        padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 10.0),
+        margin: EdgeInsets.all(30.0),
+        child: Text("Yo"),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Text("Sup"),
