@@ -2,6 +2,7 @@
  * Copyright (c) 2021/  1/ 14.  Created by Hashim Tahir
  */
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,23 +25,23 @@ class HomeStatelessWidget extends StatelessWidget {
         centerTitle: true,
       ),
       /*To nest widgets use child property*/
-      body: Row(
-        /*mainAxis alignment ie. along x-axis
-        * cross axis alignment ie. along y-axis*/
-
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("Text 1"),
-          FlatButton(
-            onPressed: () {},
-            color: Colors.amber[500],
-            child: Text("Button"),
+          Container(
+            padding: EdgeInsets.all(20.0),
+            color: Colors.cyan[500],
+            child: Text("Text 1"),
           ),
           Container(
-            color: Colors.cyan[600],
-            padding: EdgeInsets.all(20),
-            child: Text("Inner Containter"),
+            padding: EdgeInsets.all(30.0),
+            color: Colors.amberAccent[500],
+            child: Text("Text 2"),
+          ),
+          Container(
+            padding: EdgeInsets.all(40.0),
+            color: Colors.pink[500],
+            child: Text("Text 3"),
           )
         ],
       ),
