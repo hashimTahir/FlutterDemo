@@ -24,15 +24,25 @@ class HomeStatelessWidget extends StatelessWidget {
         centerTitle: true,
       ),
       /*To nest widgets use child property*/
-      body: Container(
-        color: Colors.grey[400],
-        /*Edge insets used for padding and margins inside containers.*/
-        /*Padding widget can be used for the internal childs. but
-        * it cant have margin.
-        * for margins use container widget.*/
-        padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 10.0),
-        margin: EdgeInsets.all(30.0),
-        child: Text("Yo"),
+      body: Row(
+        /*mainAxis alignment ie. along x-axis
+        * cross axis alignment ie. along y-axis*/
+
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text("Text 1"),
+          FlatButton(
+            onPressed: () {},
+            color: Colors.amber[500],
+            child: Text("Button"),
+          ),
+          Container(
+            color: Colors.cyan[600],
+            padding: EdgeInsets.all(20),
+            child: Text("Inner Containter"),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
