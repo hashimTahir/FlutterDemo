@@ -6,49 +6,83 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-/*Scfold can act as a wrapper for bottom bar, navigation drawer
-* floating action button etc.*/
-  runApp(MaterialApp(home: HomeStatelessWidget()));
+  runApp(MaterialApp(home: HCard()));
 }
 
-/*Statless Widget-> State of the widget canot change over time*/
-/*Stateful Widget-> State of the widget can change over time
-* Hot Reload -> on saving the build get called  and changes are applied.
-* */
-class HomeStatelessWidget extends StatelessWidget {
+class HCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        backgroundColor: Colors.red[600],
-        title: Text("Flutter Demo"),
+        title: Text("Testing"),
         centerTitle: true,
+        backgroundColor: Colors.grey[850],
+        elevation: 0.0,
       ),
-      /*To nest widgets use child property*/
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            padding: EdgeInsets.all(20.0),
-            color: Colors.cyan[500],
-            child: Text("Text 1"),
-          ),
-          Container(
-            padding: EdgeInsets.all(30.0),
-            color: Colors.amberAccent[500],
-            child: Text("Text 2"),
-          ),
-          Container(
-            padding: EdgeInsets.all(40.0),
-            color: Colors.pink[500],
-            child: Text("Text 3"),
-          )
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Text("Sup"),
-        backgroundColor: Colors.red[600],
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/test_image3.webp'),
+                radius: 40.0,
+              ),
+            ),
+            Divider(
+              height: 60.0,
+              color: Colors.grey[800],
+            ),
+            Text('First name',
+                style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('Hashim',
+                style: TextStyle(
+                    color: Colors.amberAccent[200],
+                    letterSpacing: 2.0,
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 30.0,
+            ),
+            Text('Last Name',
+                style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text('Tahir',
+                style: TextStyle(
+                    color: Colors.amberAccent[200],
+                    letterSpacing: 2.0,
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.email,
+                  color: Colors.grey[400],
+                ),
+                SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  'Hashim@live.com',
+                  style: TextStyle(
+                      color: Colors.grey[400],
+                      fontSize: 18.0,
+                      letterSpacing: 1.0),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
