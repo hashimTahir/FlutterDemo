@@ -6,83 +6,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: HCard()));
+  runApp(MaterialApp(home: QuotesList()));
 }
 
-class HCard extends StatelessWidget {
+class QuotesList extends StatefulWidget {
+  @override
+  _QuotesListState createState() => _QuotesListState();
+}
+
+class _QuotesListState extends State<QuotesList> {
+
+  List<String> hQuotesList = ["First, solve the problem. Then, write the code",
+    "Experience is the name everyone gives to their mistakes."
+        " In order to be irreplaceable, one must always be different"
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text("Testing"),
-        centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0.0,
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/test_image3.webp'),
-                radius: 40.0,
-              ),
-            ),
-            Divider(
-              height: 60.0,
-              color: Colors.grey[800],
-            ),
-            Text('First name',
-                style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('Hashim',
-                style: TextStyle(
-                    color: Colors.amberAccent[200],
-                    letterSpacing: 2.0,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold)),
-            SizedBox(
-              height: 30.0,
-            ),
-            Text('Last Name',
-                style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
-            SizedBox(
-              height: 10.0,
-            ),
-            Text('Tahir',
-                style: TextStyle(
-                    color: Colors.amberAccent[200],
-                    letterSpacing: 2.0,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold)),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  'Hashim@live.com',
-                  style: TextStyle(
-                      color: Colors.grey[400],
-                      fontSize: 18.0,
-                      letterSpacing: 1.0),
-                ),
-              ],
-            )
-          ],
+        title: Text(
+          'Quotes',
         ),
+        centerTitle: true,
+        backgroundColor: Colors.redAccent[200],
+      ),
+      body: Column(
+        children:
+        hQuotesList.map((quote) {
+          return Text(quote);
+        }).toList(),
+
       ),
     );
   }
