@@ -4,7 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/widgets/HcardWidget.dart';
+import 'package:flutter_demo/widgets/QuoteCard.dart';
 
 import 'data/Quote.dart';
 
@@ -23,16 +23,28 @@ class _QuotesListState extends State<QuotesList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[200],
-        appBar: AppBar(
-          title: Text(
-            'Quotes',
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.redAccent[200],
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(
+        title: Text(
+          'Quotes',
         ),
-        body: Column(
-          children: hQuotesList.map((quote) => HcardWidget(quote)).toList(),
-        ));
+        centerTitle: true,
+        backgroundColor: Colors.redAccent[200],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: hQuotesList
+              .map((quote) => QuoteCard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        hQuotesList.remove(quote);
+                      });
+                    },
+                  ))
+              .toList(),
+        ),
+      ),
+    );
   }
 }
