@@ -5,10 +5,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/data/Quote.dart';
 
-class HcardWidget extends Card {
-  Quote hQuote;
+class QuoteCard extends StatelessWidget {
+  Quote quote;
 
-  HcardWidget(this.hQuote);
+  Null Function() delete;
+
+  QuoteCard({this.quote, Null Function() this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +22,25 @@ class HcardWidget extends Card {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              hQuote.hQuote,
+              quote.hQuote,
               style: TextStyle(fontSize: 18.0, color: Colors.grey[600]),
             ),
             SizedBox(
               height: 6.0,
             ),
             Text(
-              hQuote.hAuthor,
+              quote.hAuthor,
               style: TextStyle(fontSize: 14.0, color: Colors.grey[800]),
             ),
+            SizedBox(
+              height: 8.0,
+            ),
+            FlatButton.icon(
+                onPressed: () {
+                  delete();
+                },
+                icon: Icon(Icons.delete),
+                label: Text('Delete qoute'))
           ],
         ),
       ),
