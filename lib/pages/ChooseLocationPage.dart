@@ -2,8 +2,11 @@
  * Copyright (c) 2021/  1/ 16.  Created by Hashim Tahir
  */
 
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/data/LocationsList.dart';
+import 'package:flutter_demo/widgets/LocationCard.dart';
 
 class ChooseLocationPage extends StatefulWidget {
   @override
@@ -11,10 +14,8 @@ class ChooseLocationPage extends StatefulWidget {
 }
 
 class _ChooseLocationPageState extends State<ChooseLocationPage> {
+  var hList = LocationsList.hGetLocationsList();
 
-
-  /*Every time the data state changes in StatefulWidget
-  * build method is called to recreate the widget.*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,15 @@ class _ChooseLocationPageState extends State<ChooseLocationPage> {
         centerTitle: true,
         elevation: 0.0,
       ),
+      body: ListView.builder(
+        itemCount: hList.length,
+        itemBuilder: (context, index) {
+          return LocationCard(
+            hTimeUtils: hList[index],
+            onClick: () {},
+          );
+        },
+      ),
     );
-
   }
 }
