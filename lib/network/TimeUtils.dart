@@ -14,6 +14,7 @@ class TimeUtils {
   String hTime;
   String hFlag;
   String hUrl;
+  bool hIsDayTime;
 
   TimeUtils({this.hLocation, this.hFlag, this.hUrl});
 
@@ -30,12 +31,21 @@ class TimeUtils {
 
         hDatetime = hDatetime.add(Duration(hours: int.parse(hOffsett)));
         hTime = DateFormat.jm().format(hDatetime);
+        hSetDayNight(hDatetime);
       } else {
-        hTime ='Something went wrong';
+        hTime = 'Something went wrong';
       }
     } catch (e) {
       Constants.hLogger.d('Exception ${e}');
-        hTime ='Could not retrieve time';
+      hTime = 'Could not retrieve time';
+    }
+  }
+
+  void hSetDayNight(DateTime hDatetime) {
+    if (hDatetime.hour > 6 && hDatetime.hour < 20) {
+      hIsDayTime = true;
+    } else {
+      hIsDayTime = false;
     }
   }
 }

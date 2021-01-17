@@ -7,12 +7,8 @@ class Constants {
   static var hLogger = FimberLog("HashimFimberTag");
   static var hBaseUrl = 'http://worldtimeapi.org/api/timezone/';
 
-
   static var hLocation = 'hLocation';
   static var hFlag = 'hFlag';
   static var hTime = 'hTime';
-
-
-
+  static var hDayTime = 'hDayTime';
 }
-

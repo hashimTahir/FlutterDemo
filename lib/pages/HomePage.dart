@@ -21,40 +21,69 @@ class _HomePageState extends State<HomePage> {
     hRetrievedDataMap = ModalRoute.of(context).settings.arguments;
 
     Constants.hLogger.d("Retrieved data $hRetrievedDataMap");
+    String hImagePath = 'assets/';
+
+    bool hIsDayTime = hRetrievedDataMap[Constants.hDayTime];
+    Color hBgColor = hIsDayTime ? Colors.blue : Colors.indigo[700];
+
+    if (hIsDayTime) {
+      hImagePath = hImagePath + 'daytime.png';
+    } else {
+      hImagePath = hImagePath + 'nighttime.png';
+    }
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(0.0, 120.0, 0.0, 0.0),
-        child: SafeArea(
-            child: Column(
-          children: [
-            FlatButton.icon(
+      backgroundColor: hBgColor,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(hImagePath), fit: BoxFit.cover)),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0.0, 120.0, 0.0, 0.0),
+          child: SafeArea(
+              child: Column(
+            children: [
+              FlatButton.icon(
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.hLocationRoute);
                 },
-                icon: Icon(Icons.edit_location),
-                label: Text('Edit Location')),
-            SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  hRetrievedDataMap[Constants.hLocation],
-                  style: TextStyle(fontSize: 28.0, letterSpacing: 2.0),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              hRetrievedDataMap[Constants.hTime],
-              style: TextStyle(fontSize: 66.0, letterSpacing: 2.0),
-            )
-          ],
-        )),
+                icon: Icon(
+                  Icons.edit_location,
+                  color: Colors.grey[300],
+                ),
+                label: Text(
+                  'Edit Location',
+                  style: TextStyle(
+                    color: Colors.grey[300],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    hRetrievedDataMap[Constants.hLocation],
+                    style: TextStyle(
+                        fontSize: 28.0,
+                        letterSpacing: 2.0,
+                        color: Colors.white),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text(
+                hRetrievedDataMap[Constants.hTime],
+                style: TextStyle(
+                    fontSize: 66.0, letterSpacing: 2.0, color: Colors.white),
+              )
+            ],
+          )),
+        ),
       ),
     );
   }

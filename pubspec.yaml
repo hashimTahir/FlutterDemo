@@ -26,6 +26,7 @@ dependencies:
   fimber: ^0.4.4
   http: ^0.12.2
   intl: ^0.16.1
+  flutter_spinkit: ^4.1.2+1
 
 
   # The following adds the Cupertino Icons font to your application.
