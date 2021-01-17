@@ -2,10 +2,11 @@
  * Copyright (c) 2021/  1/ 16.  Created by Hashim Tahir
  */
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/data/LocationsList.dart';
+import 'package:flutter_demo/network/TimeUtils.dart';
+import 'package:flutter_demo/utils/Constants.dart';
 import 'package:flutter_demo/widgets/LocationCard.dart';
 
 class ChooseLocationPage extends StatefulWidget {
@@ -31,10 +32,24 @@ class _ChooseLocationPageState extends State<ChooseLocationPage> {
         itemBuilder: (context, index) {
           return LocationCard(
             hTimeUtils: hList[index],
-            onClick: () {},
+            onClick: () {
+              hGetNewTime(hList[index]);
+            },
           );
         },
       ),
     );
+  }
+
+  void hGetNewTime(TimeUtils timeUtils) async {
+    TimeUtils hTimeUtils = timeUtils;
+    await hTimeUtils.hGetTimeFromServer();
+
+    Navigator.pop(context, {
+      Constants.hTime: hTimeUtils.hTime,
+      Constants.hFlag: hTimeUtils.hFlag,
+      Constants.hLocation: hTimeUtils.hLocation,
+      Constants.hDayTime: hTimeUtils.hIsDayTime
+    });
   }
 }

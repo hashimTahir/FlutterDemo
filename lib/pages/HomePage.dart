@@ -18,7 +18,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     /*Retrieve the data from the route i.e. from loading page*/
-    hRetrievedDataMap = ModalRoute.of(context).settings.arguments;
+    if (hRetrievedDataMap.isEmpty) {
+      hRetrievedDataMap = ModalRoute.of(context).settings.arguments;
+    }
 
     Constants.hLogger.d("Retrieved data $hRetrievedDataMap");
     String hImagePath = 'assets/';
@@ -44,8 +46,17 @@ class _HomePageState extends State<HomePage> {
               child: Column(
             children: [
               FlatButton.icon(
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.hLocationRoute);
+                onPressed: () async {
+                  dynamic hResult =
+                      await Navigator.pushNamed(context, Routes.hLocationRoute);
+                  setState(() {
+                    hRetrievedDataMap = {
+                      Constants.hFlag: hResult[Constants.hFlag],
+                      Constants.hLocation: hResult[Constants.hLocation],
+                      Constants.hTime: hResult[Constants.hTime],
+                      Constants.hDayTime: hResult[Constants.hDayTime]
+                    };
+                  });
                 },
                 icon: Icon(
                   Icons.edit_location,
