@@ -4,8 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/models/TimeModel.dart';
-import 'package:flutter_demo/network/ApiCalls.dart';
+import 'package:flutter_demo/network/TimeUtils.dart';
 import 'package:flutter_demo/utils/Constants.dart';
 
 class LoadingPage extends StatefulWidget {
@@ -14,31 +13,34 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  TimeModel hTimeModel;
+  String hTime = 'Loading';
 
-  void hGetTimeData() async {
-    hTimeModel = await ApiCalls.hGetTimeFromServer();
-    Constants.hLogger.d("Time ${hTimeModel.datetime}");
-    Constants.hLogger.d("OffSet ${hTimeModel.utcOffset}");
+  void hGetTime() async {
+    TimeUtils hTimeUtils = TimeUtils(
+        hLocation: 'paskitan', hFlag: 'pakistan.png', hUrl: 'Asia/Karachi');
+    await hTimeUtils.hGetTimeFromServer();
 
-    DateTime hDatetime = DateTime.parse(hTimeModel.datetime);
-    String hOffsett = hTimeModel.utcOffset.substring(1, 3);
 
-    hDatetime.add(Duration(hours: int.parse(hOffsett)));
-    Constants.hLogger.d(hDatetime.toString());
+    Constants.hLogger.d('Time is ${hTimeUtils.hTime}');
+    setState(() {
+      hTime = hTimeUtils.hTime;
+    });
+
   }
 
   @override
   void initState() {
     super.initState();
-
-    hGetTimeData();
+    hGetTime();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Loading Page'),
+      body: Padding(
+        padding: const EdgeInsets.all(50.0),
+        child: Text(hTime),
+      ),
     );
   }
 }
